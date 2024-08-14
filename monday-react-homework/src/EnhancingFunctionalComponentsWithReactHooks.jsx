@@ -5,7 +5,15 @@ const moviesList = () => {
         "The Sandlot", "Pulp Fiction", "Soul Surfer", 
     "Saving Private Ryan", "Black Mass", "Slapshot", "Friday Night Lights"
     ])
-}
+
+    return (
+        <div className="display-movies"><span><button>View Movies</button></span>
+            <ul>
+
+            </ul>
+        </div>
+    );
+};
 
 const movieSummaries = () => {
     const summaries [summaries, setSummaries] = useState([
