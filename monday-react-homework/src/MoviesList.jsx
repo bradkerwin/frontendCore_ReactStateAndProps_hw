@@ -4,7 +4,7 @@ const MoviesList = () => {
     const [movies, setMovies] = useState([
         "The Sandlot", "Pulp Fiction", "Soul Surfer", 
     "Saving Private Ryan", "Black Mass", "Slapshot", "Friday Night Lights"
-    ])
+    ]);
 
     const [summaries, setSummaries] = useState([
         "In the summer of 1962, a new kid in town is taken under the wing of a young baseball prodigy and his rowdy team, resulting in many adventures.",
@@ -16,13 +16,30 @@ const MoviesList = () => {
         "Based on H.G. Bissinger's book, which profiled the economically depressed town of Odessa, Texas and their heroic high school football team, The Permian High Panthers."
     ]);
 
+    const removeMovie = (index) => {
+        setMovies(movies.filter((movie, remove) => remove !== index));
+        setSummaries(summaries.filter((movie, remove) => remove !== index));
+    }
+
+    const [sportsMovies, setSportsMovies] = useState([
+    "The Sandlot", "Soul Surfer", "Slapshot", "Friday Night Lights"
+    ]);
+    
     const [selected, setSelected] = useState(-1);
+
 
     return (
         <div className="display-movies">
+            <h3>Movies</h3>
             <ul>
-                {movies.map((movie, index) =>
-            <li onClick={() => setSelected(index)} key={index}>{movie}</li>)}
+                {movies.map((movie, index) => 
+                <li onClick={() => setSelected(index)} key={index}>{movie}<button onClick={() => summaries(index)}>View Summary</button></li>)}
+
+                {movies.map((movie, index) =>              
+                <li onClick={() => setSelected(index)} key={index}>{movie}<button onClick={() => removeMovie(index)}>Remove Movie</button></li>)}
+
+                <li><button onClick={("click", setsportsMovies())}>Display Sports Movies</button></li>
+               
             </ul>
         </div>
     );
